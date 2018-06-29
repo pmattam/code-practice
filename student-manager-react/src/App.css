@@ -1,0 +1,42 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.heading {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+.heading div {
+    display: flex;
+}
+
+.heading-values-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-values {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+.heading-values div {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+
+.form input {
+    display: flex;
+}

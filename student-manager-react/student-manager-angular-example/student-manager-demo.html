@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Student Manager Demo</title>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th {
+      border: 1px solid black;
+    }
+
+    table td {
+      border: 1px solid gray;
+      padding: 2px;
+    }
+
+    table td input[type=text] {
+      width: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Student Manager Demo</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Smoothie Flavor</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="student-table-body">
+        <tr>
+          <td>Manoush</td>
+          <td>Zomorodi</td>
+          <td>Chocolate</td>
+          <td><a class="delete-button" href="#">delete</a></td>
+        </tr>
+        <tr>
+          <td>Gustavo</td>
+          <td>Fring</td>
+          <td>Lemonade</td>
+          <td><a class="delete-button" href="#">delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="add-button">Add Student</button>
+    <script>
+    (function(document) {
+      var tbody = document.getElementById('student-table-body');
+      var addButton = document.getElementById('add-button');
+      addButton.addEventListener('click', function() {
+        var row = document.createElement('tr');
+        row.innerHTML = [
+          '<td><input type="text"></td>',
+          '<td><input type="text"></td>',
+          '<td>',
+            '<select>',
+              '<option>Chocolate</option>',
+              '<option>Strawberry</option>',
+              '<option>Mango</option>',
+              '<option>Lemonade</option>',
+            '</select>',
+          '</td>',
+          '<td><button class="save-button">Save</button></td>',
+        ].join('');
+        tbody.appendChild(row);
+      });
+      tbody.addEventListener('click', function(evt) {
+        var target = event.target;
+        if (target.classList.contains('save-button')) {
+          var parentRow = target.parentNode.parentNode;
+          var firstName = parentRow.children[0].children[0].value;
+          var lastName = parentRow.children[1].children[0].value;
+          var smoothieFlavor = parentRow.children[2].children[0].value;
+          tbody.removeChild(parentRow);
+          var row = document.createElement('tr');
+          row.innerHTML = [
+            '<td>', firstName, '</td>',
+            '<td>', lastName, '</td>',
+            '<td>', smoothieFlavor, '</td>',
+            '<td><a class="delete-button" href="#">delete</a></td>'
+          ].join('');
+          tbody.appendChild(row);
+        }
+        if (target.classList.contains('delete-button')) {
+          var parentRow = target.parentNode.parentNode;
+          tbody.removeChild(parentRow);
+        }
+      });
+    })(document);
+    </script>
+  </body>
+</html>
