@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vowel Swap Demo</title>
+  </head>
+  <body>
+    <h1>Vowel Swap Demo</h1>
+    <textarea id="textarea" width="" cols="60" rows="4"></textarea>
+    <br>
+    <button id="submit-button">Submit</button>
+    <script>var module = {};</script>
+    <script src="../01-vowel-swap/vowel-swap.js"></script>
+    <script>
+    (function(document) {
+      var textarea = document.getElementById('textarea');
+      var submitButton = document.getElementById('submit-button');
+      submitButton.addEventListener('click', function() {
+        textarea.value = vowelSwap(textarea.value);
+      });
+    })(document);
+    </script>
+  </body>
+</html>
